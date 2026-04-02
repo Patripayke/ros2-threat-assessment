@@ -1,0 +1,32 @@
+[1.631s] Invoking command in '/home/prateek/threat_ws/src/threat_system': PYTHONPATH=/home/prateek/threat_ws/build/threat_system/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/prateek/threat_ws/install/threat_system/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/threat_system build --build-base /home/prateek/threat_ws/build/threat_system/build install --record /home/prateek/threat_ws/build/threat_system/install.log --single-version-externally-managed install_data
+[2.102s] running egg_info
+[2.135s] writing ../../build/threat_system/threat_system.egg-info/PKG-INFO
+[2.136s] writing dependency_links to ../../build/threat_system/threat_system.egg-info/dependency_links.txt
+[2.137s] writing entry points to ../../build/threat_system/threat_system.egg-info/entry_points.txt
+[2.137s] writing requirements to ../../build/threat_system/threat_system.egg-info/requires.txt
+[2.137s] writing top-level names to ../../build/threat_system/threat_system.egg-info/top_level.txt
+[2.224s] reading manifest file '../../build/threat_system/threat_system.egg-info/SOURCES.txt'
+[2.225s] writing manifest file '../../build/threat_system/threat_system.egg-info/SOURCES.txt'
+[2.226s] running build
+[2.226s] running build_py
+[2.227s] copying threat_system/tracker_node.py -> /home/prateek/threat_ws/build/threat_system/build/lib/threat_system
+[2.228s] copying threat_system/detector_node.py -> /home/prateek/threat_ws/build/threat_system/build/lib/threat_system
+[2.229s] running install
+[2.240s] running install_lib
+[2.282s] copying /home/prateek/threat_ws/build/threat_system/build/lib/threat_system/tracker_node.py -> /home/prateek/threat_ws/install/threat_system/lib/python3.12/site-packages/threat_system
+[2.282s] copying /home/prateek/threat_ws/build/threat_system/build/lib/threat_system/detector_node.py -> /home/prateek/threat_ws/install/threat_system/lib/python3.12/site-packages/threat_system
+[2.284s] byte-compiling /home/prateek/threat_ws/install/threat_system/lib/python3.12/site-packages/threat_system/tracker_node.py to tracker_node.cpython-312.pyc
+[2.287s] byte-compiling /home/prateek/threat_ws/install/threat_system/lib/python3.12/site-packages/threat_system/detector_node.py to detector_node.cpython-312.pyc
+[2.289s] running install_data
+[2.290s] running install_egg_info
+[2.326s] removing '/home/prateek/threat_ws/install/threat_system/lib/python3.12/site-packages/threat_system-0.0.0-py3.12.egg-info' (and everything under it)
+[2.327s] Copying ../../build/threat_system/threat_system.egg-info to /home/prateek/threat_ws/install/threat_system/lib/python3.12/site-packages/threat_system-0.0.0-py3.12.egg-info
+[2.330s] running install_scripts
+[2.613s] Installing audio_node script to /home/prateek/threat_ws/install/threat_system/lib/threat_system
+[2.614s] Installing camera_node script to /home/prateek/threat_ws/install/threat_system/lib/threat_system
+[2.615s] Installing detector_node script to /home/prateek/threat_ws/install/threat_system/lib/threat_system
+[2.615s] Installing radar_node script to /home/prateek/threat_ws/install/threat_system/lib/threat_system
+[2.615s] Installing thermal_node script to /home/prateek/threat_ws/install/threat_system/lib/threat_system
+[2.616s] Installing tracker_node script to /home/prateek/threat_ws/install/threat_system/lib/threat_system
+[2.616s] writing list of installed files to '/home/prateek/threat_ws/build/threat_system/install.log'
+[2.694s] Invoked command in '/home/prateek/threat_ws/src/threat_system' returned '0': PYTHONPATH=/home/prateek/threat_ws/build/threat_system/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/prateek/threat_ws/install/threat_system/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/threat_system build --build-base /home/prateek/threat_ws/build/threat_system/build install --record /home/prateek/threat_ws/build/threat_system/install.log --single-version-externally-managed install_data

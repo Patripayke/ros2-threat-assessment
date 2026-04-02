@@ -1,0 +1,11 @@
+[console_scripts]
+audio_node = threat_system.audio_node:main
+camera_node = threat_system.camera_node:main
+dashboard_node = threat_system.dashboard_node:main
+detector_node = threat_system.detector_node:main
+fusion_node = threat_system.fusion_node:main
+logger_node = threat_system.logger_node:main
+radar_node = threat_system.radar_node:main
+thermal_node = threat_system.thermal_node:main
+threat_node = threat_system.threat_node:main
+tracker_node = threat_system.tracker_node:main

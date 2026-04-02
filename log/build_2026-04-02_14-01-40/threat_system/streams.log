@@ -1,0 +1,24 @@
+[1.896s] Invoking command in '/home/prateek/threat_ws/src/threat_system': PYTHONPATH=/home/prateek/threat_ws/build/threat_system/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/prateek/threat_ws/install/threat_system/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/threat_system build --build-base /home/prateek/threat_ws/build/threat_system/build install --record /home/prateek/threat_ws/build/threat_system/install.log --single-version-externally-managed install_data
+[2.412s] running egg_info
+[2.441s] writing ../../build/threat_system/threat_system.egg-info/PKG-INFO
+[2.441s] writing dependency_links to ../../build/threat_system/threat_system.egg-info/dependency_links.txt
+[2.442s] writing entry points to ../../build/threat_system/threat_system.egg-info/entry_points.txt
+[2.442s] writing requirements to ../../build/threat_system/threat_system.egg-info/requires.txt
+[2.442s] writing top-level names to ../../build/threat_system/threat_system.egg-info/top_level.txt
+[2.510s] reading manifest file '../../build/threat_system/threat_system.egg-info/SOURCES.txt'
+[2.512s] writing manifest file '../../build/threat_system/threat_system.egg-info/SOURCES.txt'
+[2.513s] running build
+[2.514s] running build_py
+[2.514s] copying threat_system/camera_node.py -> /home/prateek/threat_ws/build/threat_system/build/lib/threat_system
+[2.514s] running install
+[2.523s] running install_lib
+[2.558s] copying /home/prateek/threat_ws/build/threat_system/build/lib/threat_system/camera_node.py -> /home/prateek/threat_ws/install/threat_system/lib/python3.12/site-packages/threat_system
+[2.559s] byte-compiling /home/prateek/threat_ws/install/threat_system/lib/python3.12/site-packages/threat_system/camera_node.py to camera_node.cpython-312.pyc
+[2.561s] running install_data
+[2.561s] running install_egg_info
+[2.598s] removing '/home/prateek/threat_ws/install/threat_system/lib/python3.12/site-packages/threat_system-0.0.0-py3.12.egg-info' (and everything under it)
+[2.601s] Copying ../../build/threat_system/threat_system.egg-info to /home/prateek/threat_ws/install/threat_system/lib/python3.12/site-packages/threat_system-0.0.0-py3.12.egg-info
+[2.604s] running install_scripts
+[2.838s] Installing camera_node script to /home/prateek/threat_ws/install/threat_system/lib/threat_system
+[2.839s] writing list of installed files to '/home/prateek/threat_ws/build/threat_system/install.log'
+[2.883s] Invoked command in '/home/prateek/threat_ws/src/threat_system' returned '0': PYTHONPATH=/home/prateek/threat_ws/build/threat_system/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/prateek/threat_ws/install/threat_system/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/threat_system build --build-base /home/prateek/threat_ws/build/threat_system/build install --record /home/prateek/threat_ws/build/threat_system/install.log --single-version-externally-managed install_data
