@@ -7,7 +7,7 @@ class FusionNode(Node):
     def __init__(self):
         super().__init__('fusion_node')
 
-        # subscribers for all sensor streams
+        
         self.create_subscription(String, '/tracker/tracks', self.tracks_callback, 10)
         self.create_subscription(String, '/radar/targets', self.radar_callback, 10)
         self.create_subscription(Float32, '/audio/energy', self.audio_energy_callback, 10)
@@ -15,13 +15,13 @@ class FusionNode(Node):
 
         self.publisher = self.create_publisher(String, '/fusion/scene', 10)
 
-        # latest data from each stream
+        
         self.tracks = []
         self.radar_targets = []
         self.audio_energy = 0.0
         self.voice_detected = False
 
-        # fuse at 10 Hz
+        
         self.create_timer(0.1, self.fuse)
         self.get_logger().info('Fusion node started')
 
@@ -53,34 +53,33 @@ class FusionNode(Node):
         factors = []
         threat_score = 0.0
 
-        # --- visual track analysis ---
+        
         people = [t for t in self.tracks if t['label'] == 'person']
         scene['person_count'] = len(people)
         scene['moving_count'] = sum(1 for t in self.tracks if t['is_moving'])
         scene['occluded_count'] = sum(1 for t in self.tracks if t['is_occluded'])
 
-        # person detected — base threat
+        
         if len(people) > 0:
             threat_score += 0.2
             factors.append('person_detected')
 
-        # multiple people
         if len(people) > 1:
             threat_score += 0.15 * (len(people) - 1)
             factors.append(f'{len(people)}_people')
 
-        # moving person
+        
         moving_people = [t for t in people if t['is_moving']]
         if moving_people:
             threat_score += 0.2
             factors.append('person_moving')
 
-        # occlusion event — something is hidden
+        
         if scene['occluded_count'] > 0:
             threat_score += 0.15
             factors.append('occlusion_detected')
 
-        # --- radar analysis ---
+        
         fast_targets = [t for t in self.radar_targets if t['is_fast']]
         scene['fast_radar_targets'] = len(fast_targets)
 
@@ -88,7 +87,7 @@ class FusionNode(Node):
             threat_score += 0.15
             factors.append('fast_radar_target')
 
-        # --- audio analysis ---
+       
         if self.audio_energy > 2000:
             threat_score += 0.2
             factors.append('loud_audio')
@@ -100,7 +99,7 @@ class FusionNode(Node):
             threat_score += 0.1
             factors.append('voice_detected')
 
-        # clamp to 1.0
+        
         scene['fused_threat_score'] = round(min(threat_score, 1.0), 3)
         scene['contributing_factors'] = factors
 

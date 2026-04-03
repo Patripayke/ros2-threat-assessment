@@ -18,18 +18,18 @@ class ThermalNode(Node):
 
         frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
 
-        # resize down first for speed, process, then resize back up
+       
         small = cv2.resize(frame, (640, 360))
         gray = cv2.cvtColor(small, cv2.COLOR_BGR2GRAY)
 
-        # apply INFERNO colormap directly — skip CLAHE for performance
+       
         thermal = cv2.applyColorMap(gray, cv2.COLORMAP_INFERNO)
 
-        # lightweight noise
+       
         noise = np.random.normal(0, 5, thermal.shape).astype(np.int16)
         thermal = np.clip(thermal.astype(np.int16) + noise, 0, 255).astype(np.uint8)
 
-        # resize back to original
+      
         thermal = cv2.resize(thermal, (frame.shape[1], frame.shape[0]))
 
         out_msg = self.bridge.cv2_to_imgmsg(thermal, encoding='bgr8')

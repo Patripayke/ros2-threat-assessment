@@ -15,7 +15,7 @@ class RadarNode(Node):
         self.publisher = self.create_publisher(String, '/radar/targets', 10)
         self.bridge = CvBridge()
 
-        # motion detection state
+       
         self.prev_gray = None
         self.get_logger().info('Radar node started')
 
@@ -29,7 +29,7 @@ class RadarNode(Node):
             self.prev_gray = gray
             return
 
-        # optical flow to estimate motion — simulates mmWave doppler velocity
+       
         flow = cv2.calcOpticalFlowFarneback(
             self.prev_gray, gray, None,
             pyr_scale=0.5, levels=2, winsize=10,
@@ -37,15 +37,15 @@ class RadarNode(Node):
 
         self.prev_gray = gray
 
-        # compute magnitude and angle of motion vectors
+   
         magnitude, angle = cv2.cartToPolar(flow[..., 0], flow[..., 1])
 
-        # find regions with significant motion
+       
         motion_mask = magnitude > 2.0
         targets = []
 
         if np.any(motion_mask):
-            # find contours of moving regions
+        
             mask_uint8 = motion_mask.astype(np.uint8) * 255
             contours, _ = cv2.findContours(
                 mask_uint8, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -56,17 +56,16 @@ class RadarNode(Node):
 
                 x, y, w, h = cv2.boundingRect(cnt)
 
-                # average velocity in this region (simulates radar doppler)
+             
                 region_mag = magnitude[y:y+h, x:x+w]
                 region_ang = angle[y:y+h, x:x+w]
                 avg_velocity = float(np.mean(region_mag))
                 avg_angle = float(np.mean(region_ang))
 
-                # simulate distance with gaussian noise (meters)
+               
                 base_distance = np.random.uniform(0.5, 8.0)
                 noisy_distance = base_distance + np.random.normal(0, 0.15)
 
-                # scale coords back to original frame size
                 scale_x = frame.shape[1] / 320
                 scale_y = frame.shape[0] / 180
 

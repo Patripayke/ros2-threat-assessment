@@ -12,15 +12,14 @@ class LoggerNode(Node):
         self.subscription = self.create_subscription(
             String, '/threat/level', self.log_callback, 10)
 
-        # create logs directory
+     
         self.log_dir = os.path.expanduser('~/threat_ws/logs')
         os.makedirs(self.log_dir, exist_ok=True)
 
-        # new file per session
+  
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         self.log_path = os.path.join(self.log_dir, f'session_{timestamp}.csv')
 
-        # write header
         with open(self.log_path, 'w', newline='') as f:
             writer = csv.writer(f)
             writer.writerow([
@@ -37,7 +36,7 @@ class LoggerNode(Node):
         data = json.loads(msg.data)
         level = data['level']
 
-        # log every level change + every 5 seconds worth of data
+      
         with open(self.log_path, 'a', newline='') as f:
             writer = csv.writer(f)
             writer.writerow([

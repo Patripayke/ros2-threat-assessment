@@ -15,7 +15,7 @@ class Track:
         self.confidence = detection['confidence']
         self.hits = 1
         self.misses = 0
-        self.history = [(self.x, self.y)]  # position history
+        self.history = [(self.x, self.y)]  
 
     def center(self):
         return (self.x + self.w / 2, self.y + self.h / 2)
@@ -40,7 +40,7 @@ class Track:
         return np.sqrt(dx**2 + dy**2) > 15
 
     def is_occluded(self):
-        # track exists but hasn't been matched recently
+       
         return self.misses > 0 and self.hits > 3
 
 class TrackerNode(Node):
@@ -52,13 +52,13 @@ class TrackerNode(Node):
 
         self.tracks = []
         self.next_id = 0
-        self.max_misses = 8      # frames before dropping a track
-        self.iou_threshold = 0.2 # minimum overlap to match
+        self.max_misses = 8      
+        self.iou_threshold = 0.2 
 
         self.get_logger().info('Tracker node started')
 
     def iou(self, t, d):
-        # intersection over union between track and detection
+        
         tx1, ty1 = t.x, t.y
         tx2, ty2 = t.x + t.w, t.y + t.h
         dx1, dy1 = d['x'], d['y']
@@ -77,7 +77,7 @@ class TrackerNode(Node):
     def track_callback(self, msg):
         detections = json.loads(msg.data)
 
-        # match detections to existing tracks
+     
         matched_track_ids = set()
         matched_det_ids = set()
 
@@ -104,16 +104,16 @@ class TrackerNode(Node):
             else:
                 track.misses += 1
 
-        # create new tracks for unmatched detections
+        
         for j, det in enumerate(detections):
             if j not in matched_det_ids:
                 self.tracks.append(Track(self.next_id, det))
                 self.next_id += 1
 
-        # remove dead tracks
+       
         self.tracks = [t for t in self.tracks if t.misses < self.max_misses]
 
-        # publish active tracks
+       
         output = []
         for track in self.tracks:
             output.append({

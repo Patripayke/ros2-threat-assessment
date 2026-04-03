@@ -51,7 +51,7 @@ class ThreatNode(Node):
         msg_out.data = json.dumps(output)
         self.publisher.publish(msg_out)
 
-        # only log when level changes
+        
         if level != self.prev_level:
             self.get_logger().info(
                 f'THREAT LEVEL {level} — {LEVELS[level]["label"]} '

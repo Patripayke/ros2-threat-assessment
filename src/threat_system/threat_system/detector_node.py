@@ -15,14 +15,14 @@ class DetectorNode(Node):
         self.publisher = self.create_publisher(String, '/detections/objects', 10)
         self.bridge = CvBridge()
 
-        # yolov8 nano — fastest, runs on CPU fine
+      
         self.get_logger().info('Loading YOLOv8 model...')
-        self.model = YOLO('yolov8n.pt')  # auto downloads on first run
+        self.model = YOLO('yolov8n.pt') 
         self.get_logger().info('Detector node ready')
 
-        # skip frames to maintain speed
+       
         self.frame_count = 0
-        self.run_every = 3  # run YOLO every 3rd frame
+        self.run_every = 3 
 
     def detect_callback(self, msg):
         self.frame_count += 1
@@ -41,7 +41,7 @@ class DetectorNode(Node):
             cls = int(box.cls[0])
             label = self.model.names[cls]
 
-            # scale coords back to original frame size
+           
             scale_x = frame.shape[1] / 640
             scale_y = frame.shape[0] / 360
 

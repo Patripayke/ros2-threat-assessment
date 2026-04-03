@@ -20,7 +20,7 @@ class AudioNode(Node):
             frames_per_buffer=1024
         )
 
-        # background thread for audio so it doesn't block ROS
+        
         self.running = True
         self.thread = threading.Thread(target=self.audio_loop)
         self.thread.daemon = True
@@ -34,10 +34,10 @@ class AudioNode(Node):
                     self.stream.read(1024, exception_on_overflow=False),
                     dtype=np.int16)
 
-                # RMS energy — how loud is the environment
+                
                 rms = float(np.sqrt(np.mean(data.astype(np.float32) ** 2)))
 
-                # simple VAD — is there a voice or loud sound
+                
                 voice_detected = rms > 500
 
                 energy_msg = Float32()
